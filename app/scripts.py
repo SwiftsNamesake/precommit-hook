@@ -51,8 +51,10 @@ class Exec:
 class Post_install(install):
 
     def run(self):
+        print('\n\nPOST INSTALL BEGIN\n\n')
         install.run(self)
         Exec.add_pre_commit()
+        print('\n\nPOST INSTALL END\n\n')
 
 
 class Post_develop(develop):
@@ -67,7 +69,7 @@ class Post_develop(develop):
 class Post_egg_info(egg_info):
 
     def run(self):
-        print('\n\nPOST X BEGIN\n\n')
+        print('\n\nPOST EGG BEGIN\n\n')
         egg_info.run(self)
         Exec.add_pre_commit()
-        print('\n\nPOST DEVELOP END\n\n')
+        print('\n\nPOST EGG END\n\n')
