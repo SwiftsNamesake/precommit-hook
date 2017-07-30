@@ -38,8 +38,9 @@ class Exec:
                 os.system("mkdir -p .git/hooks")
 
             # finally copy and set permissions
-            os.system(
-                "cp app/tmp/template.dat .git/hooks/pre-commit && sudo chmod +x .git/hooks/pre-commit")
+            # os.system(
+            #     "cp app/tmp/template.dat .git/hooks/pre-commit && sudo chmod +x .git/hooks/pre-commit")
+            print('Pretending to run os.system command')
             print("Precommit added successfully, continuing ...")
         else:
             print(
@@ -57,12 +58,16 @@ class Post_install(install):
 class Post_develop(develop):
 
     def run(self):
+        print('\n\nPOST DEVELOP BEGIN\n\n')
         develop.run(self)
         Exec.add_pre_commit()
+        print('\n\nPOST DEVELOP END\n\n')
 
 
 class Post_egg_info(egg_info):
 
     def run(self):
+        print('\n\nPOST X BEGIN\n\n')
         egg_info.run(self)
         Exec.add_pre_commit()
+        print('\n\nPOST DEVELOP END\n\n')
